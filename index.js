@@ -5,7 +5,14 @@ const server = http.createServer((req, res) => {
   console.log("Request Method:", req.method);
 
   res.writeHead(200, { "Content-Type": "text/plain" });
-  res.end("Hello from Node Server");
+  if(req.url === "/") {
+    res.end("Hello, World!");
+  } else if(req.url === "/about") {
+    res.end("This is the about page.");
+    } else {
+    res.end("404 Page not found.");
+    }
+
 });
 
 server.listen(3000, () => {
